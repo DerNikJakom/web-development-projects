@@ -1,0 +1,57 @@
+<%- include('partials/header.ejs') %>
+
+<div class="album py-5 bg-body-secondary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        <% function showCard(title, description) { %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title"><%= title %></h2>
+              <p class="card-description"><%= description %></p>
+              <div class="d-flex justify-content-space-between align-items-center">
+                <div class="gap-3">
+                  <form>
+                    <button id="edit-btn" type="submit" class="btn btn-sm btn-warning" formmethod="POST" formaction="/create">Edit</button>
+                    <button id="delete-btn" type="button" class="btn btn-sm btn-danger">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+
+
+        <% if (locals.title) { %>
+          <% if (title.length === 0 || text.length === 0) { %>
+            <h1>Nothing posted yet!</h1>
+          <% } else {%>
+            <% counter = title.length %>
+            <% for( let i = 0; i < counter; i++ ) { %>
+              <% showCard(title[i], text[i]) %>
+            <% } %>
+          <% } %>
+        <% } else { %>
+          <h1>Oups! Something went wrong... :(</h1>
+        <% } %>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center pb-5 bg-body-secondary">
+    <form method="GET">
+      <button class="btn btn-primary d-inline-flex align-items-center" type="submit" formaction="/create">
+        Create another post
+      </button>
+      <button class="btn btn-outline-primary d-inline-flex align-items-center" type="submit" formaction="/">
+        Go back
+      </button>
+    </form>
+  </div>
+
+<%- include('partials/footer.ejs') %>
