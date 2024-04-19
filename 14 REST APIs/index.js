@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 const API_URL = "https://secrets-api.appbrewery.com";
 
-const yourBearerToken = "08f3026d-9c6c-4d88-a3b2-c579dc106247";
+const yourBearerToken = "b04aba61-a673-4365-b904-4259765bd7b4";
 const config = {
   headers: { Authorization: `Bearer ${yourBearerToken}` },
 };
@@ -28,6 +28,9 @@ app.post("/get-secret", async (req, res) => {
 });
 
 app.post("/post-secret", async (req, res) => {
+
+  const secret = req.body.secret
+  const score = req.body.score
   try {
     const result = await axios.post(API_URL + "/secrets", req.body, config);
     res.render("index.ejs", { content: JSON.stringify(result.data) });
@@ -37,27 +40,21 @@ app.post("/post-secret", async (req, res) => {
 });
 
 app.post("/put-secret", async (req, res) => {
-  const searchId = req.body.id;
+
+  const searchID = req.body.id
   try {
-    const result = await axios.put(
-      API_URL + "/secrets/" + searchId,
-      req.body,
-      config
-    );
+    const result = await axios.put(API_URL + "/secrets/" + searchID, req.body, config)
     res.render("index.ejs", { content: JSON.stringify(result.data) });
-  } catch (error) {
+  } catch (error) { 
     res.render("index.ejs", { content: JSON.stringify(error.response.data) });
   }
 });
 
 app.post("/patch-secret", async (req, res) => {
   const searchId = req.body.id;
+
   try {
-    const result = await axios.patch(
-      API_URL + "/secrets/" + searchId,
-      req.body,
-      config
-    );
+    const result = await axios.patch(API_URL + "/secrets/" + searchId, req.body, config)
     res.render("index.ejs", { content: JSON.stringify(result.data) });
   } catch (error) {
     res.render("index.ejs", { content: JSON.stringify(error.response.data) });
@@ -66,8 +63,9 @@ app.post("/patch-secret", async (req, res) => {
 
 app.post("/delete-secret", async (req, res) => {
   const searchId = req.body.id;
+
   try {
-    const result = await axios.delete(API_URL + "/secrets/" + searchId, config);
+    const result = await axios.delete(API_URL + "/secrets/" + searchId, config)
     res.render("index.ejs", { content: JSON.stringify(result.data) });
   } catch (error) {
     res.render("index.ejs", { content: JSON.stringify(error.response.data) });
