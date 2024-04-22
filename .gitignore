@@ -1,3 +1,6 @@
+# csv sheets to import to database
+csv/
+
 # Logs
 logs
 *.log
