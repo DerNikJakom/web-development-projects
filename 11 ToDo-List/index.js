@@ -1,4 +1,4 @@
-import ejs from "ejs"
+
 import express from "express"
 
 const port = 3000

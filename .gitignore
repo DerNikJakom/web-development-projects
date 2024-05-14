@@ -131,3 +131,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+.DS_Store
+08 QR Code Generator/qr_img.png

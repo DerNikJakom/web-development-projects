@@ -1,7 +1,7 @@
 {
-  "name": "2.4-qr-code-project",
+  "name": "08-qr-code-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "### Challenge: Using the qr-image npm package, convert an URL to a valid QR-Code",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^9.2.12",
+    "fs": "^0.0.1-security",
+    "inquirer": "^9.2.21",
     "qr-image": "^3.2.0"
   }
 }
