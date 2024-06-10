@@ -1,1 +1,1 @@
-email and password
+email and password, unencrypted
