@@ -1,14 +1,14 @@
 import React from "react";
 import Entry from "./Entry";
-import emojies from "../emojipedia";
+import emojipedia from "../emojipedia";
 
-function createCard(emojies) {
+function createEntry(emojipedia) {
   return (
     <Entry
-      key={emojies.id}
-      emoji={emojies.emoji}
-      term={emojies.name}
-      description={emojies.meaning}
+      key={emojipedia.id}
+      emoji={emojipedia.emoji}
+      term={emojipedia.name}
+      description={emojipedia.meaning}
     />
   );
 }
@@ -20,7 +20,7 @@ function App() {
         <span>emojipedia</span>
       </h1>
 
-      <dl className="dictionary">{emojies.map(createCard)}</dl>
+      <dl className="dictionary">{emojipedia.map(createEntry)}</dl>
     </div>
   );
 }
