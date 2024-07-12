@@ -5,6 +5,7 @@ import Float "mo:base/Float";
 actor DBank {
   stable var currentValue : Float = 300;
   // currentValue := 300;
+  Debug.print(debug_show (currentValue));
 
   stable var startTime = Time.now();
   // startTime := Time.now();
@@ -18,7 +19,7 @@ actor DBank {
     Debug.print(debug_show (currentValue));
   };
 
-  public func withdrawl(amount : Float) {
+  public func withdraw(amount : Float) {
     if (amount <= currentValue) {
       currentValue -= amount;
       Debug.print(debug_show (currentValue));
@@ -37,7 +38,7 @@ actor DBank {
     let currentTime = Time.now();
     let timeElapsedNS = currentTime - startTime;
     let timeElapsedS = timeElapsedNS / 1000000000;
-    currentValue := currentValue * (1.01 ** Float.fromInt(timeElapsedS));
+    currentValue := currentValue * (1.0001 ** Float.fromInt(timeElapsedS));
     startTime := currentTime;
   };
 };
